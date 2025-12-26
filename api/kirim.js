@@ -1,22 +1,22 @@
 export default async function handler(req, res) {
-  // Menangkap data dari URL (Contoh: ?nama=Sandi&rt=20...)
   const { nama, rt, status, uid, jam, tgl } = req.query;
   
   const token = "8472479987:AAFzNiI-jTV8ekoYMBl2q_l7Ruf9bev9P-I";
   const chat_id = "8480715519";
 
-  // Format tampilan pesan untuk Telegram
-  const pesanTelegram = `🔔 *NOTIFIKASI PAGAR RT 20*
+  // Format pesan tanpa Markdown yang rumit agar tidak error
+  const pesanTelegram = `🔔 NOTIFIKASI PAGAR RT 20
 -----------------------------
-👤 *Nama:* ${nama || '-'}
-🏠 *RT:* ${rt || '-'}
-📅 *Tanggal:* ${tgl || '-'}
-⏰ *Jam:* ${jam || '-'}
-🔑 *UID:* ${uid || '-'}
-🚦 *Status:* ${status || '-'}
+Nama: ${nama || '-'}
+RT: ${rt || '-'}
+Tanggal: ${tgl || '-'}
+Jam: ${jam || '-'}
+UID: ${uid || '-'}
+Status: ${status || '-'}
 -----------------------------`;
 
-  const url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chat_id}&text=${encodeURIComponent(pesanTelegram)}&parse_mode=Markdown`;
+  // Hapus "&parse_mode=Markdown" di ujung URL agar Telegram membaca sebagai teks biasa
+  const url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chat_id}&text=${encodeURIComponent(pesanTelegram)}`;
 
   try {
     const response = await fetch(url);
