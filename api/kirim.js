@@ -25,7 +25,7 @@ export default async function handler(req, res) {
   });
 
   // Susun pesan (Variabel jam dan tgl sekarang diambil dari sistem server)
-  const pesanTelegram = `🔔 NOTIFIKASI PAGAR RT 20
+  const pesanTelegram = `🔔 NOTIFIKASI PAGAR GANG KAMBING
 -----------------------------
 Nama: ${nama || '-'}
 RT: ${rt || '-'}
