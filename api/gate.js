@@ -3,7 +3,7 @@ export default async function handler(req, res) {
 
   // GANTI DENGAN DATA KAMU
   const BOT_TOKEN = "8472479987:AAFzNiI-jTV8ekoYMBl2q_l7Ruf9bev9P-I";
-  const CHAT_ID = "ID_CHAT_TELEGRAM_KAMU";
+  const CHAT_ID = "8480715519";
 
   const emoji = status === 'open' ? '🔓 TERBUKA' : '🔒 TERTUTUP';
   const waktu = new Date().toLocaleString('id-ID', { timeZone: 'Asia/Jakarta' });
