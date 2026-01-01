@@ -1,16 +1,21 @@
 export default async function handler(req, res) {
-  const { status } = req.query;
+  // Menangkap semua data yang dikirim Arduino: status, nama, rt, dan uid
+  const { status, nama, rt, uid } = req.query;
 
-  // GANTI DENGAN DATA KAMU
   const BOT_TOKEN = "8472479987:AAFzNiI-jTV8ekoYMBl2q_l7Ruf9bev9P-I";
   const CHAT_ID = "8480715519";
 
-  const emoji = status === 'open' ? '🔓 TERBUKA' : '🔒 TERTUTUP';
+  // Penyesuaian tampilan berdasarkan status
+  const emoji = status === 'open' ? '🔓 AKSES DITERIMA' : '🔒 TERTUTUP/DITOLAK';
   const waktu = new Date().toLocaleString('id-ID', { timeZone: 'Asia/Jakarta' });
   
+  // Format pesan agar menampilkan data warga dari SD Card
   const pesan = `<b>🔔 NOTIFIKASI GERBANG</b>\n\n` +
                 `Status: <b>${emoji}</b>\n` +
-                `Waktu : <code>${waktu}</code>\n\n` +
+                `Nama  : <b>${nama || 'Tidak Dikenal'}</b>\n` +
+                `RT    : ${rt || '-'}\n` +
+                `UID   : <code>${uid || '-'}</code>\n\n` +
+                `Waktu : ${waktu}\n` +
                 `<i>Sistem Keamanan Arduino</i>`;
 
   try {
