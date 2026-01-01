@@ -2,7 +2,7 @@ export default async function handler(req, res) {
   const { status } = req.query;
 
   // GANTI DENGAN DATA KAMU
-  const BOT_TOKEN = "TOKEN_BOT_TELEGRAM_KAMU";
+  const BOT_TOKEN = "8472479987:AAFzNiI-jTV8ekoYMBl2q_l7Ruf9bev9P-I";
   const CHAT_ID = "ID_CHAT_TELEGRAM_KAMU";
 
   const emoji = status === 'open' ? '🔓 TERBUKA' : '🔒 TERTUTUP';
